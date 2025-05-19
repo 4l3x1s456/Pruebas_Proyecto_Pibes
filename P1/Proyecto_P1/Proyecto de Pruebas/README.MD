@@ -10,8 +10,10 @@ tocaria colocar la variante de donde se instalo
 Generacion del server de php
 * Una vez hecho eso, abran un powershell y naveguen hasta donde este el proyecto,
 peguen esto: "php -S localhost:8000", y verifiquen si funciona, abriendo el html y navegando
+hacia "http://localhost:8000/index.html", que es donde se generaria el servidor
 
 Base de datos
 * La base de datos se llama ecommerce-shop, les tocaria crear una en el mysql phpmyadmin, tambien que tengan un usuario
 root, con la clave vacia, eso lo pueden cambiar en la parte de database.php si es que tienen otro usuario mas comodo, 
-tambien estara en la parte de la raiz, el archivo de la tabla de los productos para que la importen 
+tambien estara en la parte de la raiz, el archivo de la tabla de los productos para que la importen
+
