@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/logo.png">
+    <link rel="stylesheet" href="../css/estilo_1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs5-toast@1.0.0/dist/bs5-toast.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs5-toast@1.0.0/dist/bs5-toast.min.js"></script>
+    <script src="../js/main.js" defer></script>
+</head>
+
+<body class="bg-dark">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <h2 class="text-white">Mi Cuenta</h2>
+                </div>
+            </div>
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="user-tab" data-bs-toggle="tab" data-bs-target="#user" type="button"
+                        role="tab">Usuario</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button"
+                        role="tab">Pedidos</button>
+                </li>
+            </ul>
+
+            <div class="tab-content mt-4" id="myTabContent">
+                <!-- Pestaña de Usuario -->
+                <div class="tab-pane fade show active" id="user" role="tabpanel">
+                    <div id="user-content" class="card bg-dark text-white p-4">
+                        <!-- Contenido dinámico cargado con JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Pestaña de Pedidos -->
+                <div class="tab-pane fade" id="orders" role="tabpanel">
+                    <div id="orders-content" class="card bg-dark text-white p-4">
+                        <!-- Tabla de pedidos cargada dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/componentes/navbar.js"></script>
+    <script src="../js/componentes/sidebar.js"></script>
+    <script src="../js/componentes/footer.js"></script>
+    <script src="../js/layout.js"></script>
+    <script src="../js/funcionalidad/usuarios.js"></script>
+</body>
+
+</html>

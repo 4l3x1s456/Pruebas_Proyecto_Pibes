@@ -28,7 +28,7 @@ function loadNavbar() {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../html/usuario.html">
                                 <i class="fas fa-user"></i> Usuario
                             </a>
                         </li>

@@ -3,6 +3,26 @@ body {
     min-height: 100vh;
     padding-top: 56px;
     position: relative;
+    background-color: #3e3b3b;
+    /* Gris claro */
+    color: #000000;
+    /* Texto blanco */
+}
+
+.tab-content {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #265b8a;
+    /* Gris oscuro */
+    border-color: #265680;
+}
+
+.btn-primary:hover {
+    background-color: #5a6268;
+    /* Gris más oscuro */
+    border-color: #5a6268;
 }
 
 body::before {
@@ -38,9 +58,10 @@ body::before {
 
 .card {
     backdrop-filter: blur(5px);
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(28, 27, 27, 0.9);
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
 }
 
 #product-list {
@@ -224,7 +245,8 @@ body::before {
 }
 
 .bg-dark {
-    background-color: rgba(33, 37, 41, 0.95) !important;
+    background-color: #2e2d2d !important;
+    /* Gris oscuro */
 }
 
 .bg-dark .card {
@@ -233,7 +255,8 @@ body::before {
 
 /* Hero Section */
 .hero-section {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(106, 102, 102, 0.9);
+    /* Gris claro */
     border-radius: 10px;
     margin-bottom: 2rem;
     padding: 3rem !important;
@@ -241,6 +264,8 @@ body::before {
 
 /* Featured Products */
 .featured-card {
+    background-color: #666363c8;
+    /* Gris claro */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -379,6 +404,8 @@ body::before {
 .form-select,
 .form-control {
     background-color: rgba(255, 255, 255, 0.9);
+    color: #fff;
+    border: 1px solid #555;
 }
 
 /* View toggle styles */
@@ -391,32 +418,44 @@ body::before {
 /* Footer styles */
 .footer {
     flex-shrink: 0;
-    background-color: #343a40;
-    color: #fff;
+    background-color: #525252;
+    /* Gris oscuro */
+    color: #dcdcdc !important;
+    /* Texto blanco */
     padding: 3rem 0;
     position: relative;
     z-index: 1000;
 }
 
 .footer .social-links a {
+    color: #dcdcdc !important;
+    /* Texto blanco */
     transition: color 0.3s ease;
     font-size: 1.2rem;
 }
 
 .footer .social-links a:hover {
-    color: #0d6efd !important;
+    color: #dcdcdc !important;
+    /* Gris claro en hover */
 }
 
 .footer ul li a {
     transition: color 0.3s ease;
+    color: #dcdcdc !important;
+    /* Gris claro */
 }
 
 .footer ul li a:hover {
-    color: #fff !important;
+    color: #ffffff !important;
+    /* Texto blanco en hover */
 }
 
 .footer hr {
     opacity: 0.2;
+}
+
+.text-muted {
+    color: #dcdcdc !important; /* Gris claro para texto secundario */
 }
 
 .payment-methods {
@@ -498,7 +537,8 @@ body::before {
         border-left: none;
         border-top: 1px solid rgba(0, 0, 0, 0.125);
     }
-     .footer {
+
+    .footer {
         padding: 2rem 0;
     }
 }

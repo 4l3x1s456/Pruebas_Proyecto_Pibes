@@ -25,7 +25,7 @@ function loadSidebar() {
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../html/usuario.html">
                         <i class="fas fa-user"></i>
                         <span class="menu-text">Usuario</span>
                     </a>

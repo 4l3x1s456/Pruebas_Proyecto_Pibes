@@ -143,12 +143,13 @@ function agregarAlCarrito(id) {
                 precio: parseFloat(producto.precio),
                 imagen: producto.imagen,
                 stock: parseInt(producto.stock),
-                cantidad: cantidad
+                cantidad: cantidad,
+                categoria: producto.categoria
             });
         }
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
-        
+
         Swal.fire({
             icon: 'success',
             title: 'Producto agregado',
@@ -171,7 +172,7 @@ function renderCarrito() {
     const contenedor = document.getElementById("cart-items");
     const totalElement = document.getElementById("cart-total");
     const totalItemsElement = document.getElementById("total-items");
-    
+
     if (!contenedor) return;
 
     contenedor.innerHTML = '';
@@ -237,6 +238,16 @@ function finalizarCompra() {
         return;
     }
 
+    const usuarioAutenticado = localStorage.getItem('usuario') ? JSON.parse(localStorage.getItem('usuario')) : null;
+    if (!usuarioAutenticado) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debes iniciar sesión para finalizar la compra'
+        });
+        return;
+    }
+
     Swal.fire({
         title: '¿Confirmar compra?',
         text: `Total a pagar: $${document.getElementById("cart-total").textContent}`,
@@ -248,16 +259,58 @@ function finalizarCompra() {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Aquí iría la lógica de procesamiento de la compra
-            localStorage.removeItem("carrito");
-            carrito = [];
-            renderCarrito();
-            
-            Swal.fire(
-                '¡Compra exitosa!',
-                'Gracias por tu compra',
-                'success'
-            );
+            console.log('Compra confirmada por el usuario');
+            const pedidoData = {
+                usuario_id: usuarioAutenticado.id,
+                items: carrito.map(item => ({
+                    producto_id: item.id,
+                    nombre_producto: item.nombre,
+                    categoria_producto: item.categoria,
+                    cantidad: item.cantidad
+                }))
+            };
+
+            console.log('Datos del pedido preparados:', pedidoData);
+
+            fetch('../php/api/pedidos/create.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(pedidoData)
+            })
+                .then(response => {
+                    console.log('Respuesta del servidor recibida:', response);
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status}`);
+                    }
+                    return response.json().catch(() => {
+                        throw new Error('La respuesta del servidor no es un JSON válido');
+                    });
+                })
+                .then(data => {
+                    console.log('Datos procesados del servidor:', data);
+                    if (data.success) {
+                        localStorage.removeItem("carrito");
+                        carrito = [];
+                        renderCarrito();
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Compra exitosa!',
+                            text: 'Gracias por tu compra. Tu pedido ha sido registrado.',
+                            confirmButtonColor: '#28a745'
+                        });
+                    } else {
+                        throw new Error(data.message || 'Error al registrar el pedido');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al finalizar la compra:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: error.message || 'No se pudo completar la compra. Intenta nuevamente.'
+                    });
+                });
         }
     });
 }
@@ -265,7 +318,7 @@ function finalizarCompra() {
 function actualizarCantidad(id, nuevaCantidad) {
     try {
         const item = carrito.find(item => parseInt(item.id) === parseInt(id));
-        
+
         if (!item) {
             throw new Error('Producto no encontrado en el carrito');
         }
