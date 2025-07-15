@@ -13,6 +13,12 @@ try {
         throw new Exception("No se pudo establecer la conexión a la base de datos");
     }
 
+    $db->set_charset("utf8mb4"); // antes de hacer la query
+    if (!$result) {
+        throw new Exception("Error en la consulta: " . $db->error);
+    }
+
+
     $query = "SELECT id, nombre, descripcion, categoria, subcategoria, precio, stock FROM productos";
     $result = $db->query($query);
 
@@ -51,6 +57,9 @@ try {
     echo json_encode($productos);
 } catch (Exception $exception) {
     http_response_code(500);
-    echo json_encode(array("mensaje" => "Error al obtener productos: " . $exception->getMessage()));
+    echo json_encode([
+        "productos" => [],
+        "error" => "Error al obtener productos: " . $exception->getMessage()
+    ]);
 }
 ?>
